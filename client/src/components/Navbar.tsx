@@ -2,11 +2,12 @@ import { Fragment } from 'react'
 import { Button } from '@headlessui/react'
 import { useNavigate } from 'react-router-dom'
 import { LogOut } from 'lucide-react';
+import client from '../graphql/apolloClient';
 import KanbanIcon from '../assets/images/KanbanIcon.webp';
 const Navbar = () => {
 
     const navigate = useNavigate();
-    const handleLogout = () => { sessionStorage.clear(); navigate("/", { replace: true }); }
+    const handleLogout = async () => { sessionStorage.clear(); localStorage.clear(); await client.clearStore(); navigate("/", { replace: true }); }
 
     return (
         <Fragment>

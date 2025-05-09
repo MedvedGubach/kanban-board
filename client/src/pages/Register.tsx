@@ -53,7 +53,7 @@ const Register = () => {
             toast.success("You signed up successfully", { toastId: "register-success" });
         } catch (error) {
             console.error('error:', error);
-            toast.error("Somenthing went wrong :", { toastId: 'server-error' })
+            toast.error("Somenthing went wrong", { toastId: 'server-error' })
         }
     }
 

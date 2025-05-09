@@ -3,7 +3,7 @@ import { setContext } from "@apollo/client/link/context";
 
 
 const httpLink = createHttpLink({
-    uri: "http://localhost:5000/graphql",
+    uri: "https://kanban-board-production-9e20.up.railway.app",
 });
 
 const authLink = setContext((_, { headers }) => {

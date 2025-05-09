@@ -16,7 +16,10 @@ async function startServer() {
     console.log('✅ Connected to MongoDB!');
 
     const app = express();
-    app.use(cors());
+    app.use(cors({
+      origin: ["https://kanban-board-three-navy.vercel.app"],
+      credentials: true,
+    }));
 
     const server = new ApolloServer({ typeDefs, resolvers, context: ({ req }) => ({ req }) });
 

@@ -16,16 +16,10 @@ const Dashboard = () => {
     const [dialogOpen, setDialogOpen] = useState(false);
     const [selectedBoardId, setSelectedBoardId] = useState<string | null>(null);
     const [deleteBoard] = useMutation(DELETE_BOARD);
-    const { loading, error, data } = useQuery(GET_BOARDS, { fetchPolicy: 'cache-first', })
+    const { loading, error, data } = useQuery(GET_BOARDS, { fetchPolicy: 'network-only', })
     if (loading) return <div className="text-center py-10 font-bold">Loading boards...</div>;
-    if (error) return <div className="text-center py-10 text-red-500 font-bold">Failed to load boards.</div>;
 
-
-    const handleDelete = (boardId: string) => {
-        setSelectedBoardId(boardId);
-        setDialogOpen(true);
-    }
-
+    const handleDelete = (boardId: string) => { setSelectedBoardId(boardId); setDialogOpen(true); }
 
     const handleConfirmDelete = async (id: string) => {
         try {
@@ -69,14 +63,14 @@ const Dashboard = () => {
                     </div>
                 )}
 
+                {!loading && !error && (!data || data.getBoards.length === 0) && (
+                    <div className="col-span-full py-10 text-gray-400 font-semibold">
+                        No boards yet... Create one!
+                    </div>
+                )}
+
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 bg-neutral-900 bg-opacity-25 rounded-b-2xl">
-
-                    {data?.getBoards?.length === 0 && !error && (
-                        <div className="col-span-full py-10 text-gray-400 font-semibold">
-                            No boards yet... Create one!
-                        </div>
-                    )}
-
                     {data?.getBoards?.map((board: GetBoardsInterface) => (
                         <motion.div
                             key={board.id}

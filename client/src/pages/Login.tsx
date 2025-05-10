@@ -20,7 +20,6 @@ const Login = () => {
 
     const [loginUser, { loading, error }] = useMutation(LOGIN_USER, {
         onCompleted: async (data) => {
-            console.log('data:----', data);
             if (data?.login?.token) {
                 sessionStorage.setItem("token", data.login.token);
                 sessionStorage.setItem("user", JSON.stringify(data.login.user));

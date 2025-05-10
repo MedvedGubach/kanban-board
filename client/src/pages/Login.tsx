@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import client from '../graphql/apolloClient';
 import { LoginFormInterface } from "../interfaces/tsInterfaces";
 import { LOGIN_USER } from "../graphql/mutations/login";
 import { ApolloError, useMutation } from '@apollo/client';
@@ -18,11 +19,11 @@ const Login = () => {
 
 
     const [loginUser, { loading, error }] = useMutation(LOGIN_USER, {
-        onCompleted: (data) => {
-            console.log('data:----', data);
+        onCompleted: async (data) => {
             if (data?.login?.token) {
                 sessionStorage.setItem("token", data.login.token);
                 sessionStorage.setItem("user", JSON.stringify(data.login.user));
+                await client.clearStore();
                 navigate("/Dashboard");
             }
         }

@@ -1,2 +1,4 @@
-server/.env
-client/.env
+# Backend
+server/.env*
+# Frontend
+client/.env*

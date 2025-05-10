@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({
+  path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
+});
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { typeDefs } from './graphql/schemas/typeDefs';
@@ -9,6 +11,8 @@ import mongoose from 'mongoose';
 
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || '';
+const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:3000';
+
 // Función principal para conectar a Mongo y arrancar el servidor
 async function startServer() {
   try {
@@ -17,10 +21,16 @@ async function startServer() {
 
     const app = express();
     app.use(cors({
-      origin: ["https://kanban-board-three-navy.vercel.app"],
+      origin: [
+        'http://localhost:5173', // Vite client
+        'https://kanban-board-three-navy.vercel.app', // Vercel client
+        'https://studio.apollographql.com' // Apollo Sandbox
+      ],
       credentials: true,
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      allowedHeaders: ['Content-Type', 'Authorization']
     }));
-
+    
     const server = new ApolloServer({ typeDefs, resolvers, context: ({ req }) => ({ req }) });
 
     await server.start();

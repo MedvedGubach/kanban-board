@@ -38,12 +38,12 @@ async function startServer() {
       allowedHeaders: ['Content-Type', 'Authorization']
     }));
 
-    const server = new ApolloServer({ typeDefs, resolvers, context: ({ req }) => ({ req }) });
+    const server = new ApolloServer({ typeDefs, resolvers, context: ({ req }) => ({ req }), persistedQueries: false });
 
     await server.start();
     server.applyMiddleware({ app, path: "/graphql" });
 
-    const httpServer = app.listen(PORT, () => {
+    const httpServer = app.listen(PORT, '0.0.0.0', () => {
       console.log(`🚀 GraphQL server ready at ${process.env.NEXT_PUBLIC_GRAPHQL_URI || `http://localhost:${PORT}${server.graphqlPath}`}`);
     });
 

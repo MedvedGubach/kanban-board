@@ -50,8 +50,6 @@ const Login = () => {
 
         } catch (error) {
             const apolloError = error as ApolloError;
-            console.log(apolloError);
-
             const graphQLError = apolloError.graphQLErrors?.[0];
             if (graphQLError?.extensions?.code === "INVALID_CREDENTIALS") {
                 toast.warning("Invalid email or password", { toastId: "invalid-credentials" });

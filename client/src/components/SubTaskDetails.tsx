@@ -32,9 +32,7 @@ const SubTaskDetails = ({ title, taskId, open, onClose }: { title: string, taskI
             })
 
             toast.success(`Sub-Task status updated successfuly to: ${subTaskStatus}.`, { autoClose: 2000 })
-            console.log(data);
         } catch (error) {
-            console.log('error---', error);
             toast.error("Something went wrong:", { toastId: 'server-error' })
         }
     };

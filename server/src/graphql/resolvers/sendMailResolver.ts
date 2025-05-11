@@ -4,7 +4,6 @@ import { ApolloError } from 'apollo-server-express';
 const sendEmailResolver = {
     Mutation: {
         sendEmail: async (_: any, { to, subject, text }: { to: string, subject: string, text: string }) => {
-            console.log('node mailer api key', process.env.NODEMAILER_API_KEY)
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {

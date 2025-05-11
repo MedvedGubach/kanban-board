@@ -31,12 +31,10 @@ const CreateTask = ({ board }: { board: string }) => {
                 },
                 refetchQueries: [{ query: GET_TASKS, variables: { board } }]
             })
-            console.log(data);
             setForm({ title: "", description: "" });
             toast.success("Task created successfully", { toastId: 'task-created' })
 
         } catch (error) {
-            console.log(error);
             toast.error("Somenthing went wrong :", { toastId: 'server-error' })
         }
     }

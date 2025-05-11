@@ -30,11 +30,9 @@ const CreateBoard = () => {
                 refetchQueries: [{ query: GET_BOARDS, variables: { userId } }]
             });
 
-            console.log("board created", data);
             setForm({ title: "", description: "" });
             toast.success("Board created successfully", { toastId: 'board-created' });
         } catch (error) {
-            console.log(error);
             toast.error("Something went wrong", { toastId: 'board-created' });
         }
     }

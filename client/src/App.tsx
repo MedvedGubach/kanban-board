@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import Tasks from "./pages/Tasks";
 import PrivateRoute from "./components/PrivateRoute";
+import { Analytics } from "@vercel/analytics/react"
 import ToastComponent from "./components/ToastComponent";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
@@ -22,6 +23,7 @@ function App() {
             <div className="absolute bottom-0 right-0 h-1/2 w-1/2 bg-[radial-gradient(ellipse_50%_50%_at_80%_80%,rgba(255,0,150,0.05),transparent)]" />
           </div>
           <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 overflow-x-hidden">
+            <Analytics />
             <Routes>
               <Route path='/' element={<Login />} />
               <Route path='/Register' element={<Register />} />
@@ -30,7 +32,6 @@ function App() {
             </Routes>
             <ToastComponent />
           </div>
-
         </BrowserRouter>
       </Fragment>
     </ApolloProvider>

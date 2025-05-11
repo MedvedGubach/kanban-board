@@ -51,9 +51,7 @@ const CreateSubTasks = ({ taskId }: { taskId: string }) => {
             });
             //setForm({ title: "", subTask: "", priority: "Low", dueDate: "", subTaskStatus: "Pending" })
             toast.success("Sub-Task created successfully", { toastId: 'sub-task' })
-            console.log(data);
         } catch (error) {
-            console.log('error---', error);
             toast.error("Something went wrong:", { toastId: 'server-error' })
         }
     }

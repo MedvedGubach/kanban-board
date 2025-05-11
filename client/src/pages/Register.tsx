@@ -48,7 +48,6 @@ const Register = () => {
                     password: form.password,
                 }
             });
-            console.log('data:', data);
             setForm({ user_name: "", email: "", password: "", confirm_password: "" });
             toast.success("You signed up successfully", { toastId: "register-success" });
         } catch (error) {

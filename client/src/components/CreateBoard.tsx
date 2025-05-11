@@ -22,7 +22,7 @@ const CreateBoard = () => {
 
 
         try {
-            const { data } = await CreateBoard({
+            /* const { data } = */ await CreateBoard({
                 variables: {
                     title: form.title,
                     description: form.description,
@@ -33,6 +33,7 @@ const CreateBoard = () => {
             setForm({ title: "", description: "" });
             toast.success("Board created successfully", { toastId: 'board-created' });
         } catch (error) {
+            console.log(error)
             toast.error("Something went wrong", { toastId: 'board-created' });
         }
     }

@@ -41,13 +41,13 @@ const Register = () => {
         if (form.password !== form.confirm_password) { toast.warning("Passwords do not match", { toastId: "password-match" }); return; }
 
         try {
-            const { data } = await registerUser({
-                variables: {
-                    user_name: form.user_name,
-                    email: form.email,
-                    password: form.password,
-                }
-            });
+            /* const { data } = */ await registerUser({
+            variables: {
+                user_name: form.user_name,
+                email: form.email,
+                password: form.password,
+            }
+        });
             setForm({ user_name: "", email: "", password: "", confirm_password: "" });
             toast.success("You signed up successfully", { toastId: "register-success" });
         } catch (error) {

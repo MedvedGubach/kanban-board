@@ -37,21 +37,22 @@ const CreateSubTasks = ({ taskId }: { taskId: string }) => {
         if (form.title === "" || form.subTask === "") { toast.warning("You must fill all fields", { toastId: 'sub-task-empty-fields' }); return; }
 
         try {
-            const { data } = await createSubTaskMutation({
-                variables: {
-                    title: form.title,
-                    subTask: form.subTask,
-                    priority: form.priority,
-                    subTaskStatus: form.subTaskStatus,
-                    dueDate: form.dueDate,
-                    taskId: taskId,
-                    createdBy: userId
-                },
-                refetchQueries: [{ query: GET_SUBTASKS, variables: { taskId } }]
-            });
+            /* const { data } =  */await createSubTaskMutation({
+            variables: {
+                title: form.title,
+                subTask: form.subTask,
+                priority: form.priority,
+                subTaskStatus: form.subTaskStatus,
+                dueDate: form.dueDate,
+                taskId: taskId,
+                createdBy: userId
+            },
+            refetchQueries: [{ query: GET_SUBTASKS, variables: { taskId } }]
+        });
             //setForm({ title: "", subTask: "", priority: "Low", dueDate: "", subTaskStatus: "Pending" })
             toast.success("Sub-Task created successfully", { toastId: 'sub-task' })
         } catch (error) {
+            console.log(error)
             toast.error("Something went wrong:", { toastId: 'server-error' })
         }
     }

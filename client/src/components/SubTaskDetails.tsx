@@ -24,7 +24,7 @@ const SubTaskDetails = ({ title, taskId, open, onClose }: { title: string, taskI
         const subTaskStatus = e ? "Complete" : "Pending";
 
         try {
-            const { data } = await updateSubTaskStatus({
+            /* const { data } = */ await updateSubTaskStatus({
                 variables: {
                     id: subTaskId,
                     subTaskStatus: subTaskStatus
@@ -33,6 +33,7 @@ const SubTaskDetails = ({ title, taskId, open, onClose }: { title: string, taskI
 
             toast.success(`Sub-Task status updated successfuly to: ${subTaskStatus}.`, { autoClose: 2000 })
         } catch (error) {
+            console.log(error)
             toast.error("Something went wrong:", { toastId: 'server-error' })
         }
     };

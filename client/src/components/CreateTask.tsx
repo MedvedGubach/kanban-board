@@ -23,7 +23,7 @@ const CreateTask = ({ board }: { board: string }) => {
         if (form.title === '' || form.description === '') { toast.warning("Task must have a title and description", { toastId: 'task-empty-fields' }); return; }
 
         try {
-            const { data } = await createTaskMutation({
+            /* const { data } = */ await createTaskMutation({
                 variables: {
                     title: form.title,
                     description: form.description,
@@ -35,6 +35,7 @@ const CreateTask = ({ board }: { board: string }) => {
             toast.success("Task created successfully", { toastId: 'task-created' })
 
         } catch (error) {
+            console.log(error)
             toast.error("Somenthing went wrong :", { toastId: 'server-error' })
         }
     }

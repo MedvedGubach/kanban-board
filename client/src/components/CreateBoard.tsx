@@ -23,12 +23,12 @@ const CreateBoard = () => {
 
         try {
             /* const { data } = */ await CreateBoard({
-                variables: {
-                    title: form.title,
-                    description: form.description,
-                },
-                refetchQueries: [{ query: GET_BOARDS, variables: { userId } }]
-            });
+            variables: {
+                title: form.title,
+                description: form.description,
+            },
+            refetchQueries: [{ query: GET_BOARDS, variables: { userId } }]
+        });
 
             setForm({ title: "", description: "" });
             toast.success("Board created successfully", { toastId: 'board-created' });
@@ -41,10 +41,10 @@ const CreateBoard = () => {
     return (
         <Fragment>
             <div className="container mx-auto w-full">
-                <div className="space-x-6">
+                <div className="flex flex-col px-3 md:flex-row gap-4 md:gap-4 xl:gap-6">
                     <Input value={form.title} name="title" placeholder="Board Title" onChange={handleChange} type="text" className="h-12 bg-neutral-100 text-black rounded-lg" />
                     <Input value={form.description} name="description" placeholder="Board Description" onChange={handleChange} type="text" className="h-12 bg-neutral-100 text-black rounded-lg" />
-                    <Button className="rounded-xl bg-sky-600 px-4 py-2 text-sm text-white data-active:bg-sky-700 data-hover:bg-sky-500 hover:cursor-pointer"
+                    <Button className="flex justify-center items-center rounded-xl bg-sky-600 px-4 py-2 text-sm text-white data-active:bg-sky-700 data-hover:bg-sky-500 hover:cursor-pointer"
                         onClick={handleCreate} disabled={loading}>
                         {loading ? (
                             <span className="flex items-center gap-2 text-white font-semibold">

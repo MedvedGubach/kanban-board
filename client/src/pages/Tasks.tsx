@@ -104,7 +104,7 @@ const Tasks = () => {
                 </div>
 
                 <DragDropContext onDragEnd={onDragEnd}>
-                    <div className="grid grid-cols-3 gap-6 font-bold mt-6">
+                    <div className="grid  sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-6 font-bold mt-6">
                         {columns.map((col) => (
                             <Droppable droppableId={col.id} key={col.id}>
                                 {(provided) => (

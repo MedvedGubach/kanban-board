@@ -60,7 +60,7 @@ const CreateSubTasks = ({ taskId }: { taskId: string }) => {
     return (
         <Fragment>
             <div className="container mx-auto w-full mb-6">
-                <div className="space-x-4 justify-between flex">
+                <div className="flex flex-col md:flex-row gap-6 sm:-gap-6 md:gap-3 xl:gap-0 space-x-4 justify-between">
                     <Input value={form.title} name="title" placeholder="Sub-Task Title" onChange={handleChange} className="w-full h-12 bg-neutral-100 text-black rounded-lg" />
                     <Input value={form.subTask} name="subTask" placeholder="Sub-Task" onChange={handleChange} className="w-full h-12 bg-neutral-100 text-black rounded-lg" />
                     <Select onChange={handleChange} name="priority" aria-label="Priority Select" className="w-full h-12 bg-neutral-100 text-black rounded-lg">

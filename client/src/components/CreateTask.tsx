@@ -24,13 +24,13 @@ const CreateTask = ({ board }: { board: string }) => {
 
         try {
             /* const { data } = */ await createTaskMutation({
-                variables: {
-                    title: form.title,
-                    description: form.description,
-                    board: board,
-                },
-                refetchQueries: [{ query: GET_TASKS, variables: { board } }]
-            })
+            variables: {
+                title: form.title,
+                description: form.description,
+                board: board,
+            },
+            refetchQueries: [{ query: GET_TASKS, variables: { board } }]
+        })
             setForm({ title: "", description: "" });
             toast.success("Task created successfully", { toastId: 'task-created' })
 
@@ -48,10 +48,16 @@ const CreateTask = ({ board }: { board: string }) => {
                         <ArrowLeftToLine className="text-white hover:bg-yellow-500 rounded-2xl transition duration-200" />
                     </Link>
                 </div>
-                <div className="space-x-6">
-                    <Input value={form.title} name="title" placeholder="Task Title" onChange={handleChange} type="text" className="h-12 bg-neutral-100 text-black rounded-lg" />
-                    <Input value={form.description} name="description" placeholder="Task Description" onChange={handleChange} type="text" className="h-12 bg-neutral-100 text-black rounded-lg" />
-                    <Button onClick={handleCreate} disabled={loading} className="rounded-xl bg-sky-600 px-4 py-2 text-sm text-white data-active:bg-sky-700 data-hover:bg-sky-500 hover:cursor-pointer">
+                <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+                    <Input value={form.title} name="title" placeholder="Task Title" onChange={handleChange} type="text"
+                        className="h-12 w-full md:w-auto bg-neutral-100 text-black rounded-lg sm:mb-4"
+                    />
+                    <Input value={form.description} name="description" placeholder="Task Description" onChange={handleChange} type="text"
+                        className="h-12 w-full md:w-auto bg-neutral-100 text-black rounded-lg sm:mb-4"
+                    />
+                    <Button onClick={handleCreate} disabled={loading}
+                        className="rounded-xl bg-sky-600 px-4 py-2 text-sm text-white data-active:bg-sky-700 data-hover:bg-sky-500 hover:cursor-pointer sm:mb-4"
+                    >
                         {loading ?
                             <span className="flex items-center gap-2 text-white font-semibold">
                                 Creating...

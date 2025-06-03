@@ -69,7 +69,6 @@ const Dashboard = () => {
                     </div>
                 )}
 
-
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 bg-neutral-900 bg-opacity-25 rounded-b-2xl">
                     {data?.getBoards?.map((board: GetBoardsInterface) => (
                         <motion.div

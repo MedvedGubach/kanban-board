@@ -12,10 +12,7 @@ import KanbanLogo from '../assets/images/KanbanLogo.webp';
 const Login = () => {
     const navigate = useNavigate();
 
-    const [form, setForm] = useState<LoginFormInterface>({
-        email: "",
-        password: ""
-    });
+    const [form, setForm] = useState<LoginFormInterface>({ email: "", password: "" });
 
 
     const [loginUser, { loading, error }] = useMutation(LOGIN_USER, {
@@ -29,9 +26,7 @@ const Login = () => {
         }
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setForm({ ...form, [e.target.name]: e.target.value })
-    }
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }
 
     const handleLogin = async () => {
         if (form.email === '' || form.password === '') { toast.warning("Fill in all fields", { toastId: "empty-fields", }); return; }
@@ -62,7 +57,7 @@ const Login = () => {
 
     return (
         <Fragment>
-            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <div className="flex flex-col items-center justify-center min-h-screen px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 max-w-4xl bg-white rounded-lg shadow overflow-hidden dark:border dark:bg-gray-800 dark:border-gray-700">
                     <form className="space-y-6" >
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8 text-center">

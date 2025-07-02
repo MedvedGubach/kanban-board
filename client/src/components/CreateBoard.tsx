@@ -23,11 +23,8 @@ const CreateBoard = () => {
 
         try {
             /* const { data } = */ await CreateBoard({
-            variables: {
-                title: form.title,
-                description: form.description,
-            },
-            refetchQueries: [{ query: GET_BOARDS, variables: { userId } }]
+            variables: { title: form.title, description: form.description, },
+            refetchQueries: [{ query: GET_BOARDS, variables: { createdBy: userId } }]
         });
 
             setForm({ title: "", description: "" });

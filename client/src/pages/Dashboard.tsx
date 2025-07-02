@@ -58,8 +58,8 @@ const Dashboard = () => {
                 </div>
 
                 {error && (
-                    <div className="text-center py-4 text-red-500 font-bold">
-                        Failed to load boards. You can still create one.
+                    <div className="text-center py-4 text-yellow-500 font-bold">
+                        No boards yet... You can still create one.
                     </div>
                 )}
 

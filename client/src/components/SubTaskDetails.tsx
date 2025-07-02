@@ -25,10 +25,7 @@ const SubTaskDetails = ({ title, taskId, open, onClose }: { title: string, taskI
 
         try {
             /* const { data } = */ await updateSubTaskStatus({
-            variables: {
-                id: subTaskId,
-                subTaskStatus: subTaskStatus
-            }
+            variables: { id: subTaskId, subTaskStatus: subTaskStatus },
         })
 
             toast.success(`Sub-Task status updated successfuly to: ${subTaskStatus}.`, { autoClose: 2000 })
@@ -65,7 +62,7 @@ const SubTaskDetails = ({ title, taskId, open, onClose }: { title: string, taskI
                                         {title}
                                     </DialogTitle>
 
-                                    <div className="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
                                         {
                                             data?.getSubTasks?.map((subtasks: GetSubTasksInterface, index: number) => (
                                                 <Fragment key={index}>
